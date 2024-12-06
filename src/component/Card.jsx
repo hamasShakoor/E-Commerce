@@ -1,30 +1,28 @@
 import React from "react";
+import "../App.css";
 
 const Card = (props) => {
   return (
     <>
-      <div className="bg-white rounded-xl shadow-md relative">
-        <div className="p-4">
-          <div className="mb-6">
-            <div className="text-gray-600 my-2">{props.category.id}</div>
-            <h3 className="text-xl font-bold">{props.category.name}</h3>
+      <div className="card">
+        <div className="card-content">
+          <div className="card-header">
+            <div className="card-category">{props.category.id}</div>
+            <h3 className="card-title">{props.category.name}</h3>
           </div>
 
-          <div className="mb-5">this is description</div>
+          <div className="card-description">this is description</div>
 
-          <h3 className="text-indigo-500 mb-2">$70K - $80K</h3>
+          <h3 className="card-salary">$70K - $80K</h3>
 
-          <div className="border border-gray-100 mb-5"></div>
+          <div className="card-divider"></div>
 
-          <div className="flex flex-col lg:flex-row justify-between mb-4">
-            <div className="text-orange-700 mb-3">
+          <div className="card-footer card-footer-lg">
+            <div className="card-location">
               <i className="fa-solid fa-location-dot text-lg"></i>
               Boston, MA
             </div>
-            <a
-              href="job.html"
-              className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
-            >
+            <a href="job.html" className="card-button">
               Read More
             </a>
           </div>

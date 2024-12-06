@@ -2,16 +2,13 @@ import { useEffect, useState } from "react";
 import Navbar from "./component/Navbar";
 import Card from "./component/Card";
 import { getCategories } from "./api/categories/getCategories";
-import { getProducts } from "./api/products/getProducts";
 
 const App = () => {
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     getCategoriesCaller();
-    getProductsCaller();
   }, []);
 
   const getCategoriesCaller = async () => {
@@ -23,19 +20,6 @@ const App = () => {
       console.log("==============================error: ", e.message);
       setError(e.message);
       setCategories([]);
-    }
-  };
-
-  useEffect(() => {}, []);
-
-  const getProductsCaller = async () => {
-    try {
-      const res = await getProducts();
-      setError("");
-    } catch (e) {
-      console.log("==============================error: ", e.message);
-      setError(e.message);
-      setProducts([]);
     }
   };
 

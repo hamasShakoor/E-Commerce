@@ -90,3 +90,81 @@
   font-weight: bold;
   color: #28a745;
 }
+
+/* ==========================={ Card ki css }=============================== */
+
+.card {
+  background: white;
+  border-radius: 12px; /* equivalent to rounded-xl */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+  position: relative;
+}
+
+.card-content {
+  padding: 16px; /* p-4 */
+}
+
+.card-header {
+  margin-bottom: 24px; /* mb-6 */
+}
+
+.card-category {
+  color: #4b5563; /* text-gray-600 */
+  margin: 8px 0; /* my-2 */
+}
+
+.card-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold; /* font-bold */
+}
+
+.card-description {
+  margin-bottom: 20px; /* mb-5 */
+}
+
+.card-salary {
+  color: #6366f1; /* text-indigo-500 */
+  margin-bottom: 8px; /* mb-2 */
+}
+
+.card-divider {
+  border: 1px solid #f3f4f6; /* border-gray-100 */
+  margin-bottom: 20px; /* mb-5 */
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 16px; /* mb-4 */
+}
+
+.card-footer-lg {
+  flex-direction: row; /* lg:flex-row */
+}
+
+.card-location {
+  color: #c2410c; /* text-orange-700 */
+  margin-bottom: 12px; /* mb-3 */
+}
+
+.card-location i {
+  font-size: 1.125rem; /* text-lg */
+}
+
+.card-button {
+  height: 36px; /* h-[36px] */
+  background-color: #6366f1; /* bg-indigo-500 */
+  color: white;
+  padding: 8px 16px; /* px-4 py-2 */
+  border-radius: 8px; /* rounded-lg */
+  text-align: center;
+  font-size: 0.875rem; /* text-sm */
+  display: inline-block;
+}
+
+.card-button:hover {
+  background-color: #4f46e5; /* hover:bg-indigo-600 */
+}
+
+/* ============================{ Navbar ki css }======================================= */
