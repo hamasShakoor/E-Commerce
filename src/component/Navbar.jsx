@@ -1,9 +1,28 @@
 import logo from "../assets/images/logo.png";
 import loginImage from "../assets/images/login.png";
 import { IoIosSearch } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCategories } from "../api/categories/getCategories";
 
-const Navbar = () => {
+const Navbar = ({ setSelectedCategoryId, setError }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategoriesCaller();
+    // getProductsCaller();
+  }, []);
+  const getCategoriesCaller = async () => {
+    try {
+      const res = await getCategories();
+      setCategories(res.data);
+      setError("");
+    } catch (e) {
+      console.log("==============================error: ", e.message);
+      setError(e.message);
+      setCategories([]);
+    }
+  };
+
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleDropdown = (dropdown) => {
@@ -17,27 +36,26 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-              <a
-                className="flex flex-shrink-0 items-center mr-4"
-                href="/index.html"
-              >
-                <img className="h-10 w-auto" src={logo} alt="logo" />
-                <span className="hidden md:block text-black text-2xl font-bold ml-2">
-                  Logo
-                </span>
+        <div className="nav-container">
+          <div className="nav-bar">
+            <div className="nav-left">
+              <a href="/index.html" className="nav-logo">
+                <img src={logo} alt="logo" />
+                <span>Logo</span>
               </a>
+              <input
+                type="text"
+                placeholder="Search.."
+                className="search-input"
+              />
+              <button className="search-button">
+                <IoIosSearch />
+              </button>
               <div className="md:ml-auto">
-                <div className="flex space-x-2">
-                  <a
-                    href="/shop-all"
-                    className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                  >
+                <div className="nav-links">
+                  <a href="/shop-all" className="nav-link">
                     Shop All
                   </a>
-                  {/* Dropdown for Brands */}
                   <div className="relative">
                     <a
                       href="#"
@@ -83,7 +101,6 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
-                  {/* Dropdown for Categories */}
                   <div className="relative">
                     <a
                       href="#"
@@ -107,63 +124,34 @@ const Navbar = () => {
                       </svg>
                     </a>
                     {activeDropdown === "categories" && (
-                      <div className="absolute z-10 mt-2 w-48 origin-top-right bg-white border border-gray-300 rounded-md shadow-lg">
-                        <a
-                          href="/categories/men"
-                          className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                        >
-                          Men
-                        </a>
-                        <a
-                          href="/categories/women"
-                          className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                        >
-                          Women
-                        </a>
-                        <a
-                          href="/categories/kid"
-                          className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                        >
-                          kid
-                        </a>
+                      <div className="absolute z-10 mt-2 w-48 origin-top-right bg-white border border-gray-300 rounded-md shadow-lg h-32 overflow-auto">
+                        {categories.map((category) => (
+                          <a
+                            key={category.id}
+                            href={`/shop-all/${category.name}`} // URL will look like: /categories/men-41
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setSelectedCategoryId(category.id);
+                            }} // Update selected category ID on click
+                            className="rounded-md block px-4 py-2 text-sm text-black hover:bg-gray-100"
+                          >
+                            {category.name}
+                          </a>
+                        ))}
                       </div>
                     )}
                   </div>
-                  <a
-                    href="/sale"
-                    className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                  >
+                  <a href="/sale" className="nav-link">
                     Sale
                   </a>
-                  <a
-                    href="/about"
-                    className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                  >
+                  <a href="/about" className="nav-link">
                     About
                   </a>
-                  <a
-                    href="/contact"
-                    className="rounded-md block  px-4 py-2 text-sm text-black hover:bg-gray-100"
-                  >
+                  <a href="/contact" className="nav-link">
                     Contact
                   </a>
-                  <input
-                    type="text"
-                    placeholder="Search.."
-                    className="outline-none border-b border-black"
-                  />
-                  <button className="bg-gray-100 p-2 rounded-sm	hover:bg-gray-200">
-                    <IoIosSearch />
-                  </button>
-                  <a
-                    href="/login"
-                    className="rounded-md block px-4 py-2 text-sm text-black hover:bg-gray-100"
-                  >
-                    <img
-                      className="h-5 w-5 inline-block mr-2"
-                      src={loginImage}
-                      alt="login"
-                    />
+                  <a href="/login" className="login-link">
+                    <img src={loginImage} alt="login" />
                     Log in
                   </a>
                 </div>

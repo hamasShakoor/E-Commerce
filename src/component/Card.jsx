@@ -1,5 +1,6 @@
-import React from "react";
+import stuff from "../assets/images/stuff-toy.png";
 import "../App.css";
+import { RxDividerVertical } from "react-icons/rx";
 
 const Card = (props) => {
   return (
@@ -7,25 +8,32 @@ const Card = (props) => {
       <div className="card">
         <div className="card-content">
           <div className="card-header">
-            <div className="card-category">{props.category.id}</div>
-            <h3 className="card-title">{props.category.name}</h3>
+            <div className="card-category">ID: {props.product.id}</div>
+            <h3 className="card-name">Name: {props.product.name}</h3>
           </div>
 
-          <div className="card-description">this is description</div>
+          <div className="card-description">
+            Description: {props.product.description}
+          </div>
 
-          <h3 className="card-salary">$70K - $80K</h3>
+          <img src={props.product.images} alt="Stuff Toy" className="h-80" />
+
+          <h3 className="card-quantity">Quantity: {props.product.quantity}</h3>
+
+          <div className="card-size">Size: {props.product.size}</div>
+          <h3 className="card-purchase_price">
+            Purchase_price: {props.product.purchase_price}
+          </h3>
+
+          <div className="card-price">Price: {props.product.price}</div>
+          <h3 className="card-sale_price">
+            Sale_price: {props.product.sale_price}
+          </h3>
 
           <div className="card-divider"></div>
-
-          <div className="card-footer card-footer-lg">
-            <div className="card-location">
-              <i className="fa-solid fa-location-dot text-lg"></i>
-              Boston, MA
-            </div>
-            <a href="job.html" className="card-button">
-              Read More
-            </a>
-          </div>
+          <a href="cart" className="card-button">
+            Cart
+          </a>
         </div>
       </div>
     </>
