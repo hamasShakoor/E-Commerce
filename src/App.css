@@ -320,8 +320,6 @@ img {
   background-color: #f3f4f6; /* hover:bg-gray-100 */
 }
 
-
-
 /* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 8px; /* Set the width of the scrollbar */
@@ -342,4 +340,93 @@ img {
 
 ::-webkit-scrollbar-button {
   display: none; /* Hide the up/down buttons */
+}
+
+/* cart in button */
+.cart {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px; /* px-4 py-2 */
+  font-size: 0.875rem; /* text-sm */
+  color: black;
+  border-radius: 4px; /* rounded-md */
+  transition: background-color 0.3s ease;
+}
+
+.cart:hover {
+  background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+
+/* ============================={ Hero ki css }==================================== */
+/* Section styles */
+.section {
+  background-color: rgb(166, 227, 230);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* Container styles */
+.container {
+  max-width: 2vm;
+  margin-left: auto; /* mx-auto */
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  /* sm breakpoint */
+  .container {
+    padding-left: 1.5rem; /* sm:px-6 */
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* lg breakpoint */
+  .container {
+    padding-left: 2rem; /* lg:px-8 */
+    padding-right: 2rem;
+  }
+}
+
+/* Flexbox and centering styles */
+.flex-center {
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  align-items: center; /* items-center */
+}
+
+/* Text alignment */
+.text-center {
+  text-align: center; /* text-center */
+}
+
+/* Heading styles */
+.heading {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 800; /* font-extrabold */
+  color: black; /* text-black */
+}
+
+@media (min-width: 640px) {
+  /* sm breakpoint */
+  .heading {
+    font-size: 3rem; /* sm:text-5xl */
+  }
+}
+
+@media (min-width: 768px) {
+  /* md breakpoint */
+  .heading {
+    font-size: 3.75rem; /* md:text-6xl */
+  }
+}
+
+/* Paragraph styles */
+.paragraph {
+  margin-top: 1rem; /* my-4 */
+  margin-bottom: 1rem;
+  font-size: 1.25rem; /* text-xl */
+  color: black; /* text-black */
 }

@@ -3,6 +3,7 @@ import loginImage from "../assets/images/login.png";
 import { IoIosSearch } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { getCategories } from "../api/categories/getCategories";
+import { TiShoppingCart } from "react-icons/ti";
 
 const Navbar = ({ setSelectedCategoryId, setError }) => {
   const [categories, setCategories] = useState([]);
@@ -128,11 +129,11 @@ const Navbar = ({ setSelectedCategoryId, setError }) => {
                         {categories.map((category) => (
                           <a
                             key={category.id}
-                            href={`/shop-all/${category.name}`} // URL will look like: /categories/men-41
+                            href={`/shop-all/${category.name}`}
                             onClick={(e) => {
                               e.preventDefault();
                               setSelectedCategoryId(category.id);
-                            }} // Update selected category ID on click
+                            }}
                             className="rounded-md block px-4 py-2 text-sm text-black hover:bg-gray-100"
                           >
                             {category.name}
@@ -153,6 +154,10 @@ const Navbar = ({ setSelectedCategoryId, setError }) => {
                   <a href="/login" className="login-link">
                     <img src={loginImage} alt="login" />
                     Log in
+                  </a>
+                  <a href="/cart" className="cart">
+                    <TiShoppingCart />
+                    Cart
                   </a>
                 </div>
               </div>

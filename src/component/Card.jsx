@@ -1,6 +1,4 @@
-import stuff from "../assets/images/stuff-toy.png";
 import "../App.css";
-import { RxDividerVertical } from "react-icons/rx";
 
 const Card = (props) => {
   return (
@@ -16,7 +14,11 @@ const Card = (props) => {
             Description: {props.product.description}
           </div>
 
-          <img src={props.product.images} alt="Stuff Toy" className="h-80" />
+          <img
+            src={props.product.images}
+            alt="Not Image Found"
+            className="h-80"
+          />
 
           <h3 className="card-quantity">Quantity: {props.product.quantity}</h3>
 
